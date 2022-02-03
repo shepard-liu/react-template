@@ -51,7 +51,6 @@ module.exports = (env) => {
                                 lessOptions: {
                                     javascriptEnabled: true,
                                     modifyVars: {
-                                        'primary-color': '#ffbc35'
                                     }
                                 }
                             }

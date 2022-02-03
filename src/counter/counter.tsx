@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { Button } from 'antd';
 
 // import stylesheets
 import './counter.scss';
@@ -19,6 +20,9 @@ export default function Counter(props: TestProps) {
             <span>{props.name}:</span>
             <span> {state}</span >
             <button onClick={() => { setState(props.onClick(state)); }}>Click Me to +1</button>
+            <div style={{ height: '200px' }}>
+                <Button type='primary'>Ant Design Button</Button>
+            </div>
         </div>
     );
 
