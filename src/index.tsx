@@ -11,4 +11,3 @@ ReactDOM.render(
         <footer>Please delete template tsx and scss files before coding.</footer>
     </React.StrictMode >), document.getElementById('root')
 );
- 

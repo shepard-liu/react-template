@@ -3,7 +3,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     extends: [
         // Uses the recommended rules from @typescript-eslint/eslint-plugin
-        'plugin:@typescript-eslint/recommended'
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react-hooks/recommended'
     ],
     parserOptions: {
         // Allows for the parsing of modern ECMAScript features
@@ -18,6 +19,11 @@ module.exports = {
     rules: {
         // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
         // e.g. '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-empty-interface': 'warn',
+        "react-hooks/exhaustive-deps": "error",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-empty-function": 'warn'
     },
     settings: {
         react: {

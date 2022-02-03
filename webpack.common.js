@@ -3,10 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const ErrorOverlayWebpackPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = (env) => {
-    
+
     return {
         entry: {
             index: path.resolve(__dirname, './src/index.tsx'),
@@ -29,9 +28,7 @@ module.exports = (env) => {
                 {
                     test: /\.(scss|css)$/,
                     use: [
-                        env.production
-                            ? 'style-loader'
-                            : MiniCssExtractPlugin.loader,
+                        'style-loader',
                         'css-loader',
                         {
                             loader: 'sass-loader',
@@ -41,14 +38,34 @@ module.exports = (env) => {
                         }
                     ]
                 },
+                {
+                    test: /\.less$/,
+                    use: [
+                        env.production
+                            ? 'style-loader'
+                            : MiniCssExtractPlugin.loader
+                        , 'css-loader',
+                        {
+                            loader: 'less-loader',
+                            options: {
+                                lessOptions: {
+                                    javascriptEnabled: true,
+                                    modifyVars: {
+                                        'primary-color': '#ffbc35'
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
                 // Image Assets
                 {
-                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
                     type: 'asset/resource',
                 },
                 // Font Assets
                 {
-                    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                    test: /\.(woff|woff2|eot|ttf|otf|ttc)$/i,
                     type: 'asset/resource',
                 },
             ],
@@ -69,7 +86,8 @@ module.exports = (env) => {
             // ESLint plugin for checking code styles
             new EslintWebpackPlugin({
                 extensions: ['.tsx', '.ts', '.js'],
-                exclude: ['node_modules']
+                exclude: ['node_modules'],
+
             }),
             // Show pretty error overlay when app crashes in development
             // This plugin is currently not available with Webpack 5 (Webpack Dev Server v4)
