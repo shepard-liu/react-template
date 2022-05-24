@@ -6,7 +6,6 @@ A generally configured project for building react apps.
 | --------------------- | ------------------------------------------ |
 | JavaScript Transpiler | TypeScript                                 |
 | CSS Preprocessor      | Sass                                       |
-| HTML Template         | EJS (with html-webpack-plugin)             |
 | Linter                | ESLint (recommended style for TypeScript ) |
 | Testing Library       | Jest (ts-jest)                             |
 | Build System          | Webpack 5                                  |
